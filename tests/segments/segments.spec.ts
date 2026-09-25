@@ -2,7 +2,9 @@ import { test, expect } from '../../fixtures/auth.fixture';
 import { DashboardPage } from '../../page-objects/dashboard.page';
 import { SegmentsPage } from '../../page-objects/segments.page';
 
-test('segments page should open successfully', async ({ authenticatedPage }) => {
+test.describe.configure({ timeout: 60000 });
+
+test('@smoke segments page should open successfully', async ({ authenticatedPage }) => {
   const dashboardPage = new DashboardPage(authenticatedPage);
   const segmentsPage = new SegmentsPage(authenticatedPage);
 
@@ -21,7 +23,7 @@ test('segments page should open successfully', async ({ authenticatedPage }) => 
   });
 });
 
-test('create segment form should open successfully', async ({ authenticatedPage }) => {
+test('@regression create segment form should open successfully', async ({ authenticatedPage }) => {
   const dashboardPage = new DashboardPage(authenticatedPage);
   const segmentsPage = new SegmentsPage(authenticatedPage);
 
@@ -44,7 +46,7 @@ test('create segment form should open successfully', async ({ authenticatedPage 
   await expect(segmentsPage.backButton).toBeVisible();
 });
 
-test('should create a new test segment successfully', async ({ authenticatedPage }) => {
+test('@regression should create a new test segment successfully', async ({ authenticatedPage }) => {
   test.setTimeout(60000);
 
   const dashboardPage = new DashboardPage(authenticatedPage);

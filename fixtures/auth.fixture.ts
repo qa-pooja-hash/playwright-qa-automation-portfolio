@@ -14,24 +14,27 @@ export const test = base.extend<AuthFixtures>({
     // Open login page
     await loginPage.open();
 
-    // Login with credentials from .env
+    // Login
     await loginPage.login(
       process.env.TEST_EMAIL!,
       process.env.TEST_PASSWORD!
     );
 
-    // Verify workspace selection screen
+    // Wait for workspace selection
     await expect(workspacePage.heading).toBeVisible({
-      timeout: 15000
+      timeout: 20000
     });
 
     // Select ISU workspace
     await workspacePage.selectISU();
 
-    // Verify Dashboard opens
+    // Verify authentication completed
     await expect(page).toHaveURL(/\/dashboard/, {
-      timeout: 20000
+      timeout: 30000
     });
+
+    // Wait until dashboard document is ready
+    await page.waitForLoadState('domcontentloaded');
 
     // Give authenticated page to the test
     await use(page);

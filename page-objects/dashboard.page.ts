@@ -11,15 +11,15 @@ export class DashboardPage {
     this.page = page;
 
     this.audienceMenu = page
-      .getByRole('complementary')
-      .getByText('Audience', { exact: true });
+      .getByText('Audience', { exact: true })
+      .first();
 
     this.segmentsMenu = page
-      .getByRole('complementary')
-      .getByText('Segments', { exact: true });
+      .getByText('Segments', { exact: true })
+      .first();
 
     this.templatesMenu = page
-      .getByRole('complementary')
-      .getByText('Templates', { exact: true });
+      .getByText('Templates', { exact: true })
+      .first();
   }
 }

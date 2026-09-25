@@ -2,7 +2,7 @@ import { test, expect } from '../../fixtures/auth.fixture';
 import { DashboardPage } from '../../page-objects/dashboard.page';
 import { TemplatesPage } from '../../page-objects/templates.page';
 
-test('templates page should open successfully', async ({ authenticatedPage }) => {
+test('@smoke templates page should open successfully', async ({ authenticatedPage }) => {
   const dashboardPage = new DashboardPage(authenticatedPage);
   const templatesPage = new TemplatesPage(authenticatedPage);
 
@@ -21,7 +21,7 @@ test('templates page should open successfully', async ({ authenticatedPage }) =>
   });
 });
 
-test('create template form should open successfully', async ({ authenticatedPage }) => {
+test('@regression create template form should open successfully', async ({ authenticatedPage }) => {
   const dashboardPage = new DashboardPage(authenticatedPage);
   const templatesPage = new TemplatesPage(authenticatedPage);
 
@@ -52,7 +52,7 @@ test('create template form should open successfully', async ({ authenticatedPage
   ).toBeVisible();
 });
 
-test('should fill template form with test data', async ({ authenticatedPage }) => {
+test('@regression should fill template form with test data', async ({ authenticatedPage }) => {
   test.setTimeout(60000);
 
   const dashboardPage = new DashboardPage(authenticatedPage);

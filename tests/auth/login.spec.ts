@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../../page-objects/login.page';
 import { WorkspacePage } from '../../page-objects/workspace.page';
 
-test('unauthenticated user should be redirected to login page', async ({ page }) => {
+test('@smoke unauthenticated user should be redirected to login page', async ({ page }) => {
   const loginPage = new LoginPage(page);
 
   await page.goto('/dashboard');
@@ -15,7 +15,7 @@ test('unauthenticated user should be redirected to login page', async ({ page })
   await expect(loginPage.loginButton).toBeVisible();
 });
 
-test('should show validation when login fields are empty', async ({ page }) => {
+test('@regression should show validation when login fields are empty', async ({ page }) => {
   const loginPage = new LoginPage(page);
 
   await loginPage.open();
@@ -26,7 +26,7 @@ test('should show validation when login fields are empty', async ({ page }) => {
   await expect(page.getByText('Password is required')).toBeVisible();
 });
 
-test('valid login should show workspace selection', async ({ page }) => {
+test('@smoke valid login should show workspace selection', async ({ page }) => {
   const loginPage = new LoginPage(page);
   const workspacePage = new WorkspacePage(page);
 

@@ -2,7 +2,7 @@ import { test, expect } from '../../fixtures/auth.fixture';
 import { DashboardPage } from '../../page-objects/dashboard.page';
 import { SegmentsPage } from '../../page-objects/segments.page';
 
-test('dashboard should load after selecting ISU workspace', async ({ authenticatedPage }) => {
+test('@smoke dashboard should load after selecting ISU workspace', async ({ authenticatedPage }) => {
   const dashboardPage = new DashboardPage(authenticatedPage);
 
   await expect(dashboardPage.audienceMenu).toBeVisible({
@@ -10,7 +10,7 @@ test('dashboard should load after selecting ISU workspace', async ({ authenticat
   });
 });
 
-test('should navigate from dashboard to segments page', async ({ authenticatedPage }) => {
+test('@regression should navigate from dashboard to segments page', async ({ authenticatedPage }) => {
   const dashboardPage = new DashboardPage(authenticatedPage);
   const segmentsPage = new SegmentsPage(authenticatedPage);
 
