@@ -14,6 +14,11 @@ Current status: **11 working automated tests**.
 - Verify successful login
 - Verify workspace selection after login
 
+### Reusable Authentication Setup
+- Created a custom Playwright fixture for authenticated tests
+- Reused login and workspace selection across Dashboard, Segments, and Templates tests
+- Reduced duplicate setup code and improved maintainability
+
 ### Dashboard
 - Verify Dashboard loads after selecting the workspace
 - Verify navigation from Dashboard to Segments
@@ -35,7 +40,7 @@ Current status: **11 working automated tests**.
 - Segments: 3 tests
 - Templates: 3 tests
 
-Total: 11 automated tests
+**Total: 11 automated tests**
 
 ## Tech Stack
 
@@ -43,6 +48,7 @@ Total: 11 automated tests
 - **TypeScript** — test implementation
 - **Node.js** — project runtime
 - **Page Object Model (POM)** — reusable page locators and actions
+- **Custom Playwright Fixture** — reusable authenticated setup for login, workspace selection, and dashboard access
 - **Environment Variables** — secure handling of credentials
 - **Chromium** — current primary test browser
 
@@ -55,7 +61,35 @@ This portfolio uses only safe test workflows and sanitized test data.
 - The automation does not send notifications to users.
 - Event Triggers and Push Content are intentionally excluded from the automated coverage.
 
-## How to Run
+## Project Structure
+
+    playwright-qa-automation-portfolio/
+    ├── fixtures/
+    │   └── auth.fixture.ts
+    │
+    ├── page-objects/
+    │   ├── login.page.ts
+    │   ├── workspace.page.ts
+    │   ├── dashboard.page.ts
+    │   ├── segments.page.ts
+    │   └── templates.page.ts
+    │
+    ├── tests/
+    │   ├── auth/
+    │   │   └── login.spec.ts
+    │   ├── dashboard/
+    │   │   └── dashboard.spec.ts
+    │   ├── segments/
+    │   │   └── segments.spec.ts
+    │   └── templates/
+    │       └── templates.spec.ts
+    │
+    ├── .env.example
+    ├── .gitignore
+    ├── package.json
+    ├── package-lock.json
+    ├── playwright.config.ts
+    └── README.md
 
 ## How to Run
 
