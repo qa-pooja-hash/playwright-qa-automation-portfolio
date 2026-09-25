@@ -33,6 +33,12 @@ Current status: **11 working automated tests**.
 - Verify Create Template form opens
 - Create and verify a test template using safe test data
 
+### Cross-Browser Testing
+- Executed the smoke test suite on Chromium
+- Executed the smoke test suite on Firefox
+- Executed the smoke test suite on WebKit
+- Verified 5 smoke tests pass across all three browsers
+
 ## Current Automated Tests
 
 - Authentication: 3 tests
@@ -51,6 +57,7 @@ Current status: **11 working automated tests**.
 - **Custom Playwright Fixture** — reusable authenticated setup for login, workspace selection, and dashboard access
 - **Environment Variables** — secure handling of credentials
 - **Chromium** — current primary test browser
+- **Cross-Browser Testing** — smoke tests validated on Chromium, Firefox, and WebKit
 
 ## Safety
 
