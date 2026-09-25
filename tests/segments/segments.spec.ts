@@ -1,31 +1,10 @@
-import { test, expect } from '@playwright/test';
-import { LoginPage } from '../../page-objects/login.page';
-import { WorkspacePage } from '../../page-objects/workspace.page';
+import { test, expect } from '../../fixtures/auth.fixture';
 import { DashboardPage } from '../../page-objects/dashboard.page';
 import { SegmentsPage } from '../../page-objects/segments.page';
 
-test('segments page should open successfully', async ({ page }) => {
-  const loginPage = new LoginPage(page);
-  const workspacePage = new WorkspacePage(page);
-  const dashboardPage = new DashboardPage(page);
-  const segmentsPage = new SegmentsPage(page);
-
-  await loginPage.open();
-
-  await loginPage.login(
-    process.env.TEST_EMAIL!,
-    process.env.TEST_PASSWORD!
-  );
-
-  await expect(workspacePage.heading).toBeVisible({
-    timeout: 15000
-  });
-
-  await workspacePage.selectISU();
-
-  await expect(page).toHaveURL(/\/dashboard/, {
-    timeout: 20000
-  });
+test('segments page should open successfully', async ({ authenticatedPage }) => {
+  const dashboardPage = new DashboardPage(authenticatedPage);
+  const segmentsPage = new SegmentsPage(authenticatedPage);
 
   await expect(dashboardPage.segmentsMenu).toBeVisible({
     timeout: 20000
@@ -33,7 +12,7 @@ test('segments page should open successfully', async ({ page }) => {
 
   await dashboardPage.segmentsMenu.click();
 
-  await expect(page).toHaveURL(/\/segment$/, {
+  await expect(authenticatedPage).toHaveURL(/\/segment$/, {
     timeout: 20000
   });
 
@@ -42,38 +21,19 @@ test('segments page should open successfully', async ({ page }) => {
   });
 });
 
-test('create segment form should open successfully', async ({ page }) => {
-  const loginPage = new LoginPage(page);
-  const workspacePage = new WorkspacePage(page);
-  const dashboardPage = new DashboardPage(page);
-  const segmentsPage = new SegmentsPage(page);
-
-  await loginPage.open();
-
-  await loginPage.login(
-    process.env.TEST_EMAIL!,
-    process.env.TEST_PASSWORD!
-  );
-
-  await expect(workspacePage.heading).toBeVisible({
-    timeout: 15000
-  });
-
-  await workspacePage.selectISU();
-
-  await expect(page).toHaveURL(/\/dashboard/, {
-    timeout: 20000
-  });
+test('create segment form should open successfully', async ({ authenticatedPage }) => {
+  const dashboardPage = new DashboardPage(authenticatedPage);
+  const segmentsPage = new SegmentsPage(authenticatedPage);
 
   await dashboardPage.segmentsMenu.click();
 
-  await expect(page).toHaveURL(/\/segment$/, {
+  await expect(authenticatedPage).toHaveURL(/\/segment$/, {
     timeout: 20000
   });
 
   await segmentsPage.createSegmentButton.click();
 
-  await expect(page).toHaveURL(/\/segment\/create$/, {
+  await expect(authenticatedPage).toHaveURL(/\/segment\/create$/, {
     timeout: 20000
   });
 
@@ -84,42 +44,23 @@ test('create segment form should open successfully', async ({ page }) => {
   await expect(segmentsPage.backButton).toBeVisible();
 });
 
-test('should create a new test segment successfully', async ({ page }) => {
+test('should create a new test segment successfully', async ({ authenticatedPage }) => {
   test.setTimeout(60000);
 
-  const loginPage = new LoginPage(page);
-  const workspacePage = new WorkspacePage(page);
-  const dashboardPage = new DashboardPage(page);
-  const segmentsPage = new SegmentsPage(page);
+  const dashboardPage = new DashboardPage(authenticatedPage);
+  const segmentsPage = new SegmentsPage(authenticatedPage);
 
   const segmentName = `AUTO_QA_SEGMENT_${Date.now()}`;
 
-  await loginPage.open();
-
-  await loginPage.login(
-    process.env.TEST_EMAIL!,
-    process.env.TEST_PASSWORD!
-  );
-
-  await expect(workspacePage.heading).toBeVisible({
-    timeout: 15000
-  });
-
-  await workspacePage.selectISU();
-
-  await expect(page).toHaveURL(/\/dashboard/, {
-    timeout: 20000
-  });
-
   await dashboardPage.segmentsMenu.click();
 
-  await expect(page).toHaveURL(/\/segment$/, {
+  await expect(authenticatedPage).toHaveURL(/\/segment$/, {
     timeout: 20000
   });
 
   await segmentsPage.createSegmentButton.click();
 
-  await expect(page).toHaveURL(/\/segment\/create$/, {
+  await expect(authenticatedPage).toHaveURL(/\/segment\/create$/, {
     timeout: 20000
   });
 
@@ -130,21 +71,19 @@ test('should create a new test segment successfully', async ({ page }) => {
   );
 
   await segmentsPage.searchFilterButton.click();
-
   await segmentsPage.userAttributesButton.click();
-
   await segmentsPage.ageButton.click();
 
   await segmentsPage.filterValueInput.fill('30');
 
   await segmentsPage.createButton.click();
 
-  await expect(page).toHaveURL(/\/segment$/, {
+  await expect(authenticatedPage).toHaveURL(/\/segment$/, {
     timeout: 20000
   });
 
   await expect(
-    page.getByText(segmentName, { exact: true })
+    authenticatedPage.getByText(segmentName, { exact: true })
   ).toBeVisible({
     timeout: 20000
   });
