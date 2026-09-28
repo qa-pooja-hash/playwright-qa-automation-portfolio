@@ -22,8 +22,13 @@ test('@regression should show validation when login fields are empty', async ({ 
 
   await loginPage.loginButton.click();
 
-  await expect(page.getByText('Enter a valid email')).toBeVisible();
-  await expect(page.getByText('Password is required')).toBeVisible();
+  await expect(
+    page.getByText('Enter a valid email')
+  ).toBeVisible();
+
+  await expect(
+    page.getByText('Password is required')
+  ).toBeVisible();
 });
 
 test('@smoke valid login should show workspace selection', async ({ page }) => {
@@ -43,4 +48,21 @@ test('@smoke valid login should show workspace selection', async ({ page }) => {
 
   await expect(workspacePage.isuWorkspace).toBeVisible();
   await expect(workspacePage.lnbWorkspace).toBeVisible();
+});
+
+test('@regression invalid login should show an error message', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+
+  await loginPage.open();
+
+  await loginPage.login(
+    'invalid.qa.user@example.com',
+    'WrongPassword123!'
+  );
+
+  await expect(
+    page.getByText(/invalid|incorrect|unauthorized|failed/i)
+  ).toBeVisible({
+    timeout: 15000
+  });
 });

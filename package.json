@@ -1,10 +1,25 @@
 {
   "name": "playwright-qa-automation-portfolio",
   "version": "1.0.0",
-  "description": "",
+  "description": "Playwright and TypeScript QA automation portfolio",
   "main": "index.js",
-  "scripts": {},
-  "keywords": [],
+  "scripts": {
+    "test": "playwright test --workers=1",
+    "test:chromium": "playwright test --project=chromium --workers=1",
+    "test:smoke": "playwright test --project=chromium --workers=1 --grep \"@smoke\"",
+    "test:regression": "playwright test --project=chromium --workers=1 --grep \"@regression\"",
+    "test:headed": "playwright test --project=chromium --headed --workers=1",
+    "test:smoke:firefox": "playwright test --project=firefox --workers=1 --grep \"@smoke\"",
+    "test:smoke:webkit": "playwright test --project=webkit --workers=1 --grep \"@smoke\"",
+    "report": "playwright show-report"
+  },
+  "keywords": [
+    "playwright",
+    "typescript",
+    "qa",
+    "automation",
+    "testing"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
