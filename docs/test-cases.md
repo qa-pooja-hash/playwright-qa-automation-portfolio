@@ -9,17 +9,17 @@ Current automation coverage:
 | Module | Tests |
 |---|---:|
 | Authentication | 4 |
-| Dashboard | 2 |
+| Dashboard | 3 |
 | Segments | 4 |
 | Templates | 5 |
 | API Testing | 2 |
 | Mobile Testing | 2 |
-| **Total** | **19** |
+| **Total** | **20** |
 
 Current full Chromium execution:
 
 ```text
-19 passed
+20 passed
 ```
 
 ---
@@ -211,6 +211,36 @@ Yes
 
 - URL changes to the Segments route.
 - Segments heading is visible.
+
+### Automated
+
+Yes
+
+---
+
+## TC-DASH-003 — Navigate From Dashboard to Templates
+
+**Module:** Dashboard  
+**Type:** Regression  
+**Tag:** `@regression`  
+**Priority:** Medium  
+
+### Preconditions
+
+- User is authenticated.
+- ISU workspace is selected.
+- Dashboard is loaded.
+
+### Steps
+
+1. Locate the Templates option in the Dashboard navigation.
+2. Click Templates.
+3. Wait for navigation.
+
+### Expected Result
+
+- URL changes to the Templates route.
+- Templates heading is visible.
 
 ### Automated
 
@@ -773,21 +803,21 @@ Current automated tests:
 
 ```text
 Authentication Tests : 4
-Dashboard Tests      : 2
+Dashboard Tests      : 3
 Segments Tests       : 4
 Templates Tests      : 5
 API Tests            : 2
 Mobile Tests         : 2
 ------------------------
-Total                : 19
+Total                : 20
 ```
 
 Classification:
 
 ```text
 Smoke Tests      : 8
-Regression Tests : 11
-Total            : 19
+Regression Tests : 12
+Total            : 20
 ```
 
 ---
@@ -805,7 +835,7 @@ WebKit   : 8 passed
 Current complete Chromium suite:
 
 ```text
-19 passed
+20 passed
 ```
 
 ---
@@ -837,6 +867,7 @@ The following practices are used:
 | TC-AUTH-004 | Authentication | Regression | Passed |
 | TC-DASH-001 | Dashboard | Smoke | Passed |
 | TC-DASH-002 | Dashboard | Regression | Passed |
+| TC-DASH-003 | Dashboard | Regression | Passed |
 | TC-SEG-001 | Segments | Smoke | Passed |
 | TC-SEG-002 | Segments | Regression | Passed |
 | TC-SEG-003 | Segments | Regression | Passed |
@@ -856,8 +887,8 @@ The following practices are used:
 # 12. Overall Status
 
 ```text
-Total Automated Tests : 19
-Passed                : 19
+Total Automated Tests : 20
+Passed                : 20
 Failed                : 0
 ```
 

@@ -15,6 +15,9 @@ This project demonstrates real-world testing skills including:
 - Environment variable management
 - Smoke and regression test tagging
 - Cross-browser testing
+- QA test planning
+- Test case documentation
+- Bug reporting
 
 The automation is based on a CMS / Admin Dashboard workflow and uses safe, sanitized test data.
 
@@ -22,12 +25,12 @@ The automation is based on a CMS / Admin Dashboard workflow and uses safe, sanit
 
 ## Project Status
 
-✅ **19 working automated tests**
+✅ **20 working automated tests**
 
 Current Chromium execution:
 
 ```text
-19 passed
+20 passed
 ```
 
 ---
@@ -70,6 +73,7 @@ Automated dashboard scenarios including:
 
 - Verify Dashboard loads successfully after authentication
 - Verify navigation from Dashboard to Segments
+- Verify navigation from Dashboard to Templates
 
 ---
 
@@ -157,12 +161,12 @@ Current mobile coverage includes:
 | Module | Tests |
 |---|---:|
 | Authentication | 4 |
-| Dashboard | 2 |
+| Dashboard | 3 |
 | Segments | 4 |
 | Templates | 5 |
 | API Testing | 2 |
 | Mobile Testing | 2 |
-| **Total** | **19** |
+| **Total** | **20** |
 
 ---
 
@@ -191,6 +195,8 @@ Current smoke tests:
 8
 ```
 
+---
+
 ### Regression Tests
 
 ```text
@@ -202,7 +208,7 @@ Used for deeper functional and negative scenarios.
 Current regression tests:
 
 ```text
-11
+12
 ```
 
 ---
@@ -232,6 +238,11 @@ Current regression tests:
 
 ```text
 playwright-qa-automation-portfolio/
+│
+├── docs/
+│   ├── bug-samples.md
+│   ├── test-cases.md
+│   └── test-plan.md
 │
 ├── fixtures/
 │   └── auth.fixture.ts
@@ -402,7 +413,7 @@ npm run test:chromium
 Current result:
 
 ```text
-19 passed
+20 passed
 ```
 
 ---
@@ -430,7 +441,7 @@ npm run test:regression
 Current regression coverage:
 
 ```text
-11 regression tests
+12 regression tests
 ```
 
 ---
@@ -451,12 +462,24 @@ This opens the browser while Playwright executes the tests.
 npm run test:smoke:firefox
 ```
 
+Current result:
+
+```text
+8 passed
+```
+
 ---
 
 ## Run WebKit Smoke Tests
 
 ```bash
 npm run test:smoke:webkit
+```
+
+Current result:
+
+```text
+8 passed
 ```
 
 ---
@@ -513,11 +536,19 @@ The project supports:
 - Firefox
 - WebKit
 
-Core UI smoke flows have been validated across all three browser engines.
+Current smoke test results:
 
-API smoke tests have currently been verified in Chromium.
+```text
+Chromium : 8 passed
+Firefox  : 8 passed
+WebKit   : 8 passed
+```
 
-Mobile viewport tests have currently been verified in Chromium.
+The complete test suite is currently validated in Chromium.
+
+API smoke tests have been verified in Chromium.
+
+Mobile viewport tests have been verified in Chromium.
 
 ---
 
@@ -533,11 +564,13 @@ Examples:
 
 - Successful login
 - Successful navigation
-- Successful segment creation
-- Successful template creation
+- Successful Segment creation
+- Successful Template creation
 - Successful API responses
 - Successful mobile login
 - Mobile workspace selection visibility
+
+---
 
 ### Negative Testing
 
@@ -549,6 +582,17 @@ Examples:
 - Missing required Template fields
 - Incomplete Template form submission
 
+---
+
+### Navigation Testing
+
+Examples:
+
+- Dashboard to Segments navigation
+- Dashboard to Templates navigation
+
+---
+
 ### API Validation
 
 Examples:
@@ -558,6 +602,8 @@ Examples:
 - Response structure validation
 - Array validation
 - Pagination metadata validation
+
+---
 
 ### Responsive Testing
 
@@ -576,21 +622,21 @@ Examples:
 
 ```text
 Authentication Tests : 4
-Dashboard Tests      : 2
+Dashboard Tests      : 3
 Segments Tests       : 4
 Templates Tests      : 5
 API Tests            : 2
 Mobile Tests         : 2
 ------------------------
-Total                : 19
+Total                : 20
 ```
 
 Test classification:
 
 ```text
 Smoke Tests      : 8
-Regression Tests : 11
-Total            : 19
+Regression Tests : 12
+Total            : 20
 ```
 
 ---
@@ -606,6 +652,7 @@ This project demonstrates practical knowledge of:
 - Smoke Testing
 - Negative Testing
 - End-to-End Testing
+- Navigation Testing
 - API Testing
 - Responsive Testing
 - Playwright
@@ -619,6 +666,9 @@ This project demonstrates practical knowledge of:
 - Environment configuration
 - Cross-browser testing
 - Mobile viewport testing
+- QA test planning
+- Test case writing
+- Bug reporting
 - Git
 - GitHub
 
@@ -634,6 +684,8 @@ This portfolio also includes supporting QA documentation:
 
 These documents demonstrate practical QA planning, test case writing, defect reporting, and automation documentation skills.
 
+---
+
 ## Future Improvements
 
 The portfolio can be expanded with:
@@ -643,7 +695,7 @@ The portfolio can be expanded with:
 - Additional regression scenarios
 - Improved reporting
 - Authentication storage state
-- Test documentation
+- Additional QA documentation
 - CI/CD integration when appropriate
 
 ---

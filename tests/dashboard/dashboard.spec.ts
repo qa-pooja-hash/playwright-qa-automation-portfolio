@@ -1,6 +1,7 @@
 import { test, expect } from '../../fixtures/auth.fixture';
 import { DashboardPage } from '../../page-objects/dashboard.page';
 import { SegmentsPage } from '../../page-objects/segments.page';
+import { TemplatesPage } from '../../page-objects/templates.page';
 
 test('@smoke dashboard should load after selecting ISU workspace', async ({ authenticatedPage }) => {
   const dashboardPage = new DashboardPage(authenticatedPage);
@@ -25,6 +26,25 @@ test('@regression should navigate from dashboard to segments page', async ({ aut
   });
 
   await expect(segmentsPage.heading).toBeVisible({
+    timeout: 20000
+  });
+});
+
+test('@regression should navigate from dashboard to templates page', async ({ authenticatedPage }) => {
+  const dashboardPage = new DashboardPage(authenticatedPage);
+  const templatesPage = new TemplatesPage(authenticatedPage);
+
+  await expect(dashboardPage.templatesMenu).toBeVisible({
+    timeout: 20000
+  });
+
+  await dashboardPage.templatesMenu.click();
+
+  await expect(authenticatedPage).toHaveURL(/\/templates$/, {
+    timeout: 20000
+  });
+
+  await expect(templatesPage.heading).toBeVisible({
     timeout: 20000
   });
 });
