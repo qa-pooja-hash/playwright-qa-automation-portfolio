@@ -9,6 +9,7 @@ This project demonstrates real-world testing skills including:
 - End-to-end testing
 - Negative testing
 - API / network response validation
+- Mobile responsive testing
 - Page Object Model
 - Reusable authentication fixtures
 - Environment variable management
@@ -21,12 +22,12 @@ The automation is based on a CMS / Admin Dashboard workflow and uses safe, sanit
 
 ## Project Status
 
-✅ **17 working automated tests**
+✅ **18 working automated tests**
 
 Current Chromium execution:
 
 ```text
-17 passed
+18 passed
 ```
 
 ---
@@ -39,8 +40,8 @@ Automated login and authentication scenarios including:
 
 - Verify unauthenticated users are redirected to the login page
 - Verify required-field validation
-- Verify successful login
-- Verify workspace selection after login
+- Verify successful login reaches workspace selection
+- Verify available workspace options
 - Verify invalid login displays an error message
 
 ---
@@ -59,7 +60,7 @@ Login
 → Dashboard
 ```
 
-This avoids repeating the login steps inside every test.
+This avoids repeating the login steps inside every authenticated test.
 
 ---
 
@@ -67,7 +68,7 @@ This avoids repeating the login steps inside every test.
 
 Automated dashboard scenarios including:
 
-- Verify dashboard loads successfully after authentication
+- Verify Dashboard loads successfully after authentication
 - Verify navigation from Dashboard to Segments
 
 ---
@@ -79,7 +80,7 @@ Automated Segment management scenarios including:
 - Verify Segments page opens successfully
 - Verify Create Segment form opens
 - Create a test segment with automated test data
-- Verify segment creation
+- Verify successful segment creation
 - Verify required-field validation
 - Verify a segment is not created when required information is missing
 
@@ -137,6 +138,18 @@ No POST, PUT, PATCH, or DELETE API operations are performed by these API tests.
 
 ---
 
+### Mobile Testing
+
+Added responsive UI validation using a mobile viewport.
+
+Current mobile coverage includes:
+
+- Verify login page displays correctly at 390 × 844 viewport
+- Verify important login fields and button remain visible
+- Verify key elements are inside the mobile viewport
+
+---
+
 ## Current Automated Tests
 
 | Module | Tests |
@@ -146,7 +159,8 @@ No POST, PUT, PATCH, or DELETE API operations are performed by these API tests.
 | Segments | 4 |
 | Templates | 5 |
 | API Testing | 2 |
-| **Total** | **17** |
+| Mobile Testing | 1 |
+| **Total** | **18** |
 
 ---
 
@@ -167,11 +181,12 @@ Used for important application flows such as:
 - Segments page
 - Templates page
 - Read-only API checks
+- Mobile responsive validation
 
 Current smoke tests:
 
 ```text
-7
+8
 ```
 
 ### Regression Tests
@@ -200,6 +215,7 @@ Current regression tests:
 - Environment Variables
 - dotenv
 - API / Network Response Testing
+- Mobile Viewport Testing
 - Chromium
 - Firefox
 - WebKit
@@ -234,6 +250,9 @@ playwright-qa-automation-portfolio/
 │   │
 │   ├── dashboard/
 │   │   └── dashboard.spec.ts
+│   │
+│   ├── mobile/
+│   │   └── mobile.spec.ts
 │   │
 │   ├── segments/
 │   │   └── segments.spec.ts
@@ -381,7 +400,7 @@ npm run test:chromium
 Current result:
 
 ```text
-17 passed
+18 passed
 ```
 
 ---
@@ -442,6 +461,20 @@ Current API coverage:
 
 ---
 
+## Run Mobile Test
+
+```bash
+npx playwright test tests/mobile/mobile.spec.ts --project=chromium --workers=1
+```
+
+Current mobile coverage:
+
+```text
+1 passing mobile viewport test
+```
+
+---
+
 ## View Playwright HTML Report
 
 After running tests:
@@ -466,9 +499,11 @@ The project supports:
 - Firefox
 - WebKit
 
-UI smoke flows have been validated across all three browser engines.
+Core UI smoke flows have been validated across all three browser engines.
 
 API smoke tests have currently been verified in Chromium.
+
+The mobile viewport test has currently been verified in Chromium.
 
 ---
 
@@ -487,6 +522,7 @@ Examples:
 - Successful segment creation
 - Successful template creation
 - Successful API responses
+- Mobile login page visibility
 
 ### Negative Testing
 
@@ -508,6 +544,15 @@ Examples:
 - Array validation
 - Pagination metadata validation
 
+### Responsive Testing
+
+Examples:
+
+- Mobile viewport validation
+- Login field visibility
+- Login button visibility
+- Element viewport validation
+
 ---
 
 ## Current Test Summary
@@ -518,16 +563,17 @@ Dashboard Tests      : 2
 Segments Tests       : 4
 Templates Tests      : 5
 API Tests            : 2
+Mobile Tests         : 1
 ------------------------
-Total                 : 17
+Total                : 18
 ```
 
 Test classification:
 
 ```text
-Smoke Tests      : 7
+Smoke Tests      : 8
 Regression Tests : 10
-Total            : 17
+Total            : 18
 ```
 
 ---
@@ -544,6 +590,7 @@ This project demonstrates practical knowledge of:
 - Negative Testing
 - End-to-End Testing
 - API Testing
+- Responsive Testing
 - Playwright
 - TypeScript
 - Page Object Model
@@ -554,6 +601,7 @@ This project demonstrates practical knowledge of:
 - Test data management
 - Environment configuration
 - Cross-browser testing
+- Mobile viewport testing
 - Git
 - GitHub
 
@@ -564,7 +612,6 @@ This project demonstrates practical knowledge of:
 The portfolio can be expanded with:
 
 - Additional safe API tests
-- Mobile viewport testing
 - More reusable test utilities
 - Additional regression scenarios
 - Improved reporting
@@ -580,7 +627,7 @@ The portfolio can be expanded with:
 
 QA / Software Testing Professional
 
-Skills include Manual Testing, Functional Testing, Regression Testing, UI Testing, End-to-End Testing, API Testing, and Playwright Automation with TypeScript.
+Skills include Manual Testing, Functional Testing, Regression Testing, UI Testing, End-to-End Testing, API Testing, Responsive Testing, and Playwright Automation with TypeScript.
 
 ---
 
