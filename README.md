@@ -4,7 +4,7 @@ A practical QA automation portfolio built with **Playwright + TypeScript** using
 
 The project demonstrates automated testing for a CMS/Admin Dashboard, covering authentication, workspace selection, dashboard navigation, Segments, and Templates.
 
-Current status: **13 working automated tests**.
+Current status: **15 working automated tests**.
 
 ## What I Automated
 
@@ -44,9 +44,9 @@ Current status: **13 working automated tests**.
 - Authentication: 4 tests
 - Dashboard: 2 tests
 - Segments: 4 tests
-- Templates: 3 tests
+- Templates: 5 tests
 
-**Total: 13 automated tests**
+**Total: 15 automated tests**
 
 ## Tech Stack
 

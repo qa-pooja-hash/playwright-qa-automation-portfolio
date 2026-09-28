@@ -114,3 +114,62 @@ test('@regression should fill template form with test data', async ({ authentica
     timeout: 20000
   });
 });
+
+test('@regression should not create template when required fields are empty', async ({ authenticatedPage }) => {
+  const dashboardPage = new DashboardPage(authenticatedPage);
+  const templatesPage = new TemplatesPage(authenticatedPage);
+
+  await dashboardPage.templatesMenu.click();
+
+  await expect(authenticatedPage).toHaveURL(/\/templates$/, {
+    timeout: 20000
+  });
+
+  await templatesPage.createTemplateButton.click();
+
+  await expect(authenticatedPage).toHaveURL(/\/templates\/create$/, {
+    timeout: 20000
+  });
+
+  // Keep required fields empty and click Create
+  await templatesPage.createButton.click();
+
+  // User should remain on Create Template page
+  await expect(authenticatedPage).toHaveURL(/\/templates\/create$/);
+
+  // Required Template Name should still be empty
+  await expect(templatesPage.templateNameInput).toHaveValue('');
+
+  // Create Template form should still be visible
+  await expect(templatesPage.createTemplateHeading).toBeVisible();
+});
+
+test('@regression should not create template when only template name is provided', async ({ authenticatedPage }) => {
+  const dashboardPage = new DashboardPage(authenticatedPage);
+  const templatesPage = new TemplatesPage(authenticatedPage);
+
+  const templateName = `AUTO_QA_INCOMPLETE_TEMPLATE_${Date.now()}`;
+
+  await dashboardPage.templatesMenu.click();
+
+  await expect(authenticatedPage).toHaveURL(/\/templates$/, {
+    timeout: 20000
+  });
+
+  await templatesPage.createTemplateButton.click();
+
+  await expect(authenticatedPage).toHaveURL(/\/templates\/create$/, {
+    timeout: 20000
+  });
+
+  await templatesPage.templateNameInput.fill(templateName);
+
+  await expect(templatesPage.titleInput).toHaveValue('');
+  await expect(templatesPage.messageInput).toHaveValue('');
+
+  await templatesPage.createButton.click();
+
+  await expect(authenticatedPage).toHaveURL(/\/templates\/create$/);
+
+  await expect(templatesPage.createTemplateHeading).toBeVisible();
+});
