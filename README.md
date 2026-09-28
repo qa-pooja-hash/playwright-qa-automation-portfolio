@@ -624,6 +624,16 @@ This project demonstrates practical knowledge of:
 
 ---
 
+## QA Documentation
+
+This portfolio also includes supporting QA documentation:
+
+- [Test Plan](docs/test-plan.md)
+- [Automated Test Cases](docs/test-cases.md)
+- [Sample Bug Reports](docs/bug-samples.md)
+
+These documents demonstrate practical QA planning, test case writing, defect reporting, and automation documentation skills.
+
 ## Future Improvements
 
 The portfolio can be expanded with:
