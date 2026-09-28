@@ -22,12 +22,12 @@ The automation is based on a CMS / Admin Dashboard workflow and uses safe, sanit
 
 ## Project Status
 
-✅ **18 working automated tests**
+✅ **19 working automated tests**
 
 Current Chromium execution:
 
 ```text
-18 passed
+19 passed
 ```
 
 ---
@@ -147,6 +147,8 @@ Current mobile coverage includes:
 - Verify login page displays correctly at 390 × 844 viewport
 - Verify important login fields and button remain visible
 - Verify key elements are inside the mobile viewport
+- Verify valid login shows workspace selection on mobile viewport
+- Verify available workspace options remain visible on mobile
 
 ---
 
@@ -159,8 +161,8 @@ Current mobile coverage includes:
 | Segments | 4 |
 | Templates | 5 |
 | API Testing | 2 |
-| Mobile Testing | 1 |
-| **Total** | **18** |
+| Mobile Testing | 2 |
+| **Total** | **19** |
 
 ---
 
@@ -200,7 +202,7 @@ Used for deeper functional and negative scenarios.
 Current regression tests:
 
 ```text
-10
+11
 ```
 
 ---
@@ -400,7 +402,7 @@ npm run test:chromium
 Current result:
 
 ```text
-18 passed
+19 passed
 ```
 
 ---
@@ -411,12 +413,24 @@ Current result:
 npm run test:smoke
 ```
 
+Current smoke coverage:
+
+```text
+8 smoke tests
+```
+
 ---
 
 ## Run Regression Tests
 
 ```bash
 npm run test:regression
+```
+
+Current regression coverage:
+
+```text
+11 regression tests
 ```
 
 ---
@@ -461,7 +475,7 @@ Current API coverage:
 
 ---
 
-## Run Mobile Test
+## Run Mobile Tests
 
 ```bash
 npx playwright test tests/mobile/mobile.spec.ts --project=chromium --workers=1
@@ -470,7 +484,7 @@ npx playwright test tests/mobile/mobile.spec.ts --project=chromium --workers=1
 Current mobile coverage:
 
 ```text
-1 passing mobile viewport test
+2 passing mobile viewport tests
 ```
 
 ---
@@ -503,7 +517,7 @@ Core UI smoke flows have been validated across all three browser engines.
 
 API smoke tests have currently been verified in Chromium.
 
-The mobile viewport test has currently been verified in Chromium.
+Mobile viewport tests have currently been verified in Chromium.
 
 ---
 
@@ -522,7 +536,8 @@ Examples:
 - Successful segment creation
 - Successful template creation
 - Successful API responses
-- Mobile login page visibility
+- Successful mobile login
+- Mobile workspace selection visibility
 
 ### Negative Testing
 
@@ -552,6 +567,8 @@ Examples:
 - Login field visibility
 - Login button visibility
 - Element viewport validation
+- Login flow on a mobile viewport
+- Workspace selection on a mobile viewport
 
 ---
 
@@ -563,17 +580,17 @@ Dashboard Tests      : 2
 Segments Tests       : 4
 Templates Tests      : 5
 API Tests            : 2
-Mobile Tests         : 1
+Mobile Tests         : 2
 ------------------------
-Total                : 18
+Total                : 19
 ```
 
 Test classification:
 
 ```text
 Smoke Tests      : 8
-Regression Tests : 10
-Total            : 18
+Regression Tests : 11
+Total            : 19
 ```
 
 ---
