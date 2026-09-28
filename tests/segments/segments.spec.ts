@@ -90,3 +90,28 @@ test('@regression should create a new test segment successfully', async ({ authe
     timeout: 20000
   });
 });
+
+test('@regression should not create segment when required fields are empty', async ({ authenticatedPage }) => {
+  const dashboardPage = new DashboardPage(authenticatedPage);
+  const segmentsPage = new SegmentsPage(authenticatedPage);
+
+  await dashboardPage.segmentsMenu.click();
+
+  await expect(authenticatedPage).toHaveURL(/\/segment$/, {
+    timeout: 20000
+  });
+
+  await segmentsPage.createSegmentButton.click();
+
+  await expect(authenticatedPage).toHaveURL(/\/segment\/create$/, {
+    timeout: 20000
+  });
+
+  await segmentsPage.createButton.click();
+
+  await expect(authenticatedPage).toHaveURL(/\/segment\/create$/);
+
+  await expect(segmentsPage.segmentNameInput).toHaveValue('');
+
+  await expect(segmentsPage.createSegmentHeading).toBeVisible();
+});
